@@ -14,6 +14,8 @@
 
 \graphicspath{{img/}}
 
+\setlength\parindent{0cm}
+
 \geometry{
 	includeheadfoot,
 	margin=2.54cm
@@ -34,5 +36,23 @@
 \begin{document}
 	\maketitle
 	
+\section*{Exercise 3}
+We came up with a measure for how close a polygonal curve Q is to a point set P.\\
+
+We define the distance of a point $P_1$ in P to a line segment $Q_1$ in Q as \\%tims definitie + uitleg
+
+As not all points have to be close, we came up with a formula that defines the number of nearest points in P we will be looking at for each line segment. We do this in order to reduce noise from outliers. The formula we came up with is: $|P|\cdot \frac{l}{tl}$ where $|P|$ is the number of points in P, $l$ is the length of the line segment in Q we are currently looking at and $tl$ is the total length of the line segments in Q.\\
+
+We wanted large line segments to take into consideration more nearest neighbours than small line segments. This is useful when P is well distributed over Q. See for example figure \ref{fig:line-weight}. Here, 
+
+\begin{figure}
+	\label{fig:line-weight}
+%	\includegraphics{blaaaa}
+	\caption{A point set P that is well distributed over curve Q}
+\end{figure}
+
+ 
+
+
 
 \end{document}
