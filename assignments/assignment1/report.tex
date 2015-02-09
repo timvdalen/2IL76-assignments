@@ -39,11 +39,17 @@
 \section*{Exercise 3}
 We came up with a measure for how close a polygonal curve Q is to a point set P.\\
 
-We define the distance of a point $P_1$ in P to a line segment $Q_1$ in Q as \\%tims definitie + uitleg
+We define the distance of a point in P to a line segment in Q as the minimum of the perpendicular distance to the line segment and the Euclidian distances to the two endpoints of the line segment. We define the perpendicular distance to the line segment as the perpendicular distance to the line through the endpoints of the line segments, or infinite if the intersection point of the perpendicular line with the line through the endpoints is not on the line segment. See for example figure \ref{fig:perp-distance}. Here the perpendicular distance is infinite as $Q_I$ is not on the line segment ($Q_1,Q_2$). \\
 
-As not all points have to be close, we came up with a formula that defines the number of nearest points in P we will be looking at for each line segment. We do this in order to reduce noise from outliers. The formula we came up with is: $|P|\cdot \frac{l}{tl}$ where $|P|$ is the number of points in P, $l$ is the length of the line segment in Q we are currently looking at and $tl$ is the total length of the line segments in Q.\\
+%\begin{figure}
+%	\label{fig:perp-distance}
+%	\includegraphics{blaaaa}
+%	\caption{Infinite perpendicular distance}
+%\end{figure}
 
-We wanted large line segments to take into consideration more nearest neighbours than small line segments. This is useful when P is well distributed over Q. See for example figure \ref{fig:line-weight}. Here, 
+As not all points have to be close, we came up with a formula that defines the number of nearest points in P we will be looking at for each line segment. We do this in order to reduce noise from outliers. The formula we came up with is: $n\cdot \frac{l}{tl}$ where $n = |P|$, $l$ is the length of the line segment in Q we are currently looking at and $tl$ is the total length of the line segments in Q. This way, longer lines need more close points than shorter lines. Note that when adding the number of nearest points for each line segment you get $n$, but this does not mean all points have to be one of the nearest points of a line segment, as a point can be a nearest point for multiple line segments.\\
+
+We wanted large line segments to take into consideration more nearest neighbours than small line segments because this is useful when P is well distributed over Q. See for example figure \ref{fig:line-weight}. %TODO: formule invullen en zeggen dat lange lijn veel punten nodig heeft etc 
 
 %\begin{figure}
 %	\label{fig:line-weight}
