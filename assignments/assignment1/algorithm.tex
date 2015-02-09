@@ -16,9 +16,9 @@ We assume the following two simple helper algorithms:
 \algorithm{SegmentMetric($(q_i, q_j)$, $P$, $Q$)}
 $D$ is a map from point to distance to that point
 \foreach{point $p$ in $P$}
-	$D[p]$ = \textsc{Distance}($p$, $(q_i, q_j)$)
+	$D[p]$ = \textsc{Distance}($p$, $(q_i, q_j)$)$^2$
 |
-\return{the sum of the $\lceil |P| \frac{\textsc{LineSegLength}((q_i, q_j))}{\textsc{LineLength}(Q)} \rceil$ lowest distances in $D$}
+\return{the sum of the $\left\lceil |P| \frac{\textsc{LineSegLength}((q_i, q_j))}{\textsc{LineLength}(Q)} \right\rceil$ lowest distances in $D$}
 \qend
 
 \algorithm{PointCurveDistanceMetric($P$, $Q$)}
