@@ -5,12 +5,12 @@
 \usepackage{hyperref}
 \usepackage{listings}
 \usepackage{graphicx}
-\usepackage{natbib}
 \usepackage{float}
 \usepackage{caption}
 \usepackage{subcaption}
+\usepackage[T1]{fontenc}
 
-\bibliographystyle{plain}
+\input{../algoritme}
 
 \graphicspath{{img/}}
 
@@ -45,14 +45,12 @@ As not all points have to be close, we came up with a formula that defines the n
 
 We wanted large line segments to take into consideration more nearest neighbours than small line segments. This is useful when P is well distributed over Q. See for example figure \ref{fig:line-weight}. Here, 
 
-\begin{figure}
-	\label{fig:line-weight}
+%\begin{figure}
+%	\label{fig:line-weight}
 %	\includegraphics{blaaaa}
-	\caption{A point set P that is well distributed over curve Q}
-\end{figure}
+%	\caption{A point set P that is well distributed over curve Q}
+%\end{figure}
 
  
-
-
-
+	\input{algorithm}
 \end{document}
