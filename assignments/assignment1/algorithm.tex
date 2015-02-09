@@ -1,0 +1,13 @@
+We assume the following two simple helper algorithms:
+
+\begin{description}
+	\item[\textsc{PerpDistance}($p$, $(q_i, q_j)$)] calculates the perpendicular distance from point $p$ to line segment $(q_i, q_j)$.
+		If there is no such distance (because the perpendicular line from $p$ to the line that $(q_i, q_j)$ lies on does not cross $(q_i, q_j)$), this algorithm returns $\infty$.
+	\item[\textsc{PointDistance}($p$, $q$)] calculates the Euclidean distance between points $p$ and $q$.
+\end{description}
+
+\begin{sourcecode}
+\algorithm{Distance($p$, $(q_i, q_j)$}
+\return{$\min\left(\textsc{PerpDistance}(p, (q_i, q_j)), \textsc{PointDistance}(p, q_i), \textsc{PointDistance}(p, q_j)\right)$}
+\qend
+\end{sourcecode}
