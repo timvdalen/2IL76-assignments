@@ -1,0 +1,13 @@
+*.gz(busy)
+*.aux
+assignments/assignment1/img/example.svg
+assignments/assignment1/img/example.png
+assignments/assignment1/img/example1.pdf_tex
+assignments/assignment1/presentation.log
+*.log
+*.out
+*.gz
+*.toc
+*.snm
+*.pdf
+*.nav
