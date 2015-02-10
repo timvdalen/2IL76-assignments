@@ -48,10 +48,10 @@ Here, the perpendicular distance is infinite as $Q_I$ is not on the line segment
 
 \begin{figure}[H]
 	\centering
-	\label{fig:perp-distance}
 	\def\svgwidth{0.5\textwidth}
 	\input{img/perp-distance.pdf_tex}
 	\caption{Infinite perpendicular distance}
+	\label{fig:perp-distance}
 \end{figure}
 
 As not all points have to be close, we came up with a formula that defines the number of nearest points in P we will be looking at for each line segment.
@@ -65,10 +65,10 @@ See for example figure \ref{fig:line-weight}. In this figure $n = 14$ and the li
 
 \begin{figure}[H]
 	\centering
-	\label{fig:line-weight}
 	\def\svgwidth{0.5\textwidth}
 	\input{img/line-weight.pdf_tex}
 	\caption{A point set P that is well distributed over curve Q}
+	\label{fig:line-weight}
 \end{figure}
 
  
@@ -87,15 +87,15 @@ There is a loop of m segments over a function, that takes $O(n+m)$ time, but the
 So the running time of our algorithm is  $O(mn)$ \\
 
 The measure should give a low value for the distance when everywhere on Q, there are several points of P close by, and a higher value when more or longer parts of Q do not have several points close by.
-However in the following example figure \ref{fig:example}. Each line segment has points close by. 
+However in the following example Figure~\ref{fig:example1}. Each line segment has points close by. 
 The points above the long line segments are still pretty close to the long line, but there is still a longer part of Q that does not have points close by. 
 We do take the length of the lines in acccount, but we do not look where those points are on each line segment. 
 So our algorithm returns false values when there are long line segments which have points close by, but those points are all close to one point on that line and not nicely distributed. 
 \begin{figure}[H]
 	\centering
-	\label{fig:example}
 	\includegraphics[width=0.5\textwidth]{img/example1.pdf}
 	\caption{A line Q and points P, for which our algorithm gives a low value, but should return a high value.}
+	\label{fig:example1}
 \end{figure}
 
 
