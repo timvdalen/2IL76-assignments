@@ -86,7 +86,17 @@ We will do this by analysing the running time of each function.\\
 There is a loop of m segments over a function, that takes $O(n+m)$ time, but the $m$ in that function is only calculated once, so it stays $O(mn+m)$ time and not $O(m(n+m))$ time.
 So the running time of our algorithm is  $O(mn)$ \\
 
-
+The measure should give a low value for the distance when everywhere on Q, there are several points of P close by, and a higher value when more or longer parts of Q do not have several points close by.
+However in the following example figure \ref{fig:example}. Each line segment has points close by. 
+The points above the long line segments are still pretty close to the long line, but there is still a longer part of Q that does not have points close by. 
+We do take the length of the lines in acccount, but we do not look where those points are on each line segment. 
+So our algorithm returns false values when there are long line segments which have points close by, but those points are all close to one point on that line and not nicely distributed. 
+\begin{figure}[H]
+	\centering
+	\label{fig:example}
+	\includegraphics[width=0.5\textwidth]{img/example.pdf}
+	\caption{A line Q and points P, for which our algorithm gives a low value, but should return a high value.}
+\end{figure}
 
 
 
