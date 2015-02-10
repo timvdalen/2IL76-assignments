@@ -2,6 +2,7 @@
 \usepackage{amssymb}
 \usepackage{booktabs}
 \usepackage{geometry}
+\usepackage{color}
 \usepackage{hyperref}
 \usepackage{listings}
 \usepackage{graphicx}
@@ -66,10 +67,27 @@ See for example figure \ref{fig:line-weight}. %TODO: formule invullen en zeggen 
 	\centering
 	\label{fig:line-weight}
 	\def\svgwidth{0.5\textwidth}
-	\input{img/line-width.pdf_tex}
+	\input{img/line-weight.pdf_tex}
 	\caption{A point set P that is well distributed over curve Q}
 \end{figure}
 
  
 	\input{algorithm}
+	
+We will now analyse the running time of the algorithm. 
+We will do this by analysing the running time of each function.\\
+\textsc{PerpDistance}($p$, $(q_i, q_j))$ takes $O(1)$ time.\\
+\textsc{PointDistance}($p$, $q$) takes $O(1)$ time. \\
+\textsc{LineSegLength}($(q_i, q_j)$) takes $O(1)$ time. \\
+\textsc{LineLength}($Q$) takes $O(m)$ time, but if we cache the result, we only have to calculate it once. This means that when this function is called multiple times it will not become $\cdot m$ , but $+m$.\\
+\textsc{Distance}($p$, $(q_i, q_j)$) takes $O(1)$ time.\\
+\textsc{SegmentMetric}(($(q_i, q_j)$, $P$, $Q$) takes $O(n+m)$ time, because there is a for loop over n points. \\
+\textsc{PointCurveDistanceMetric}($P$, $Q$)  takes $O(mn + m)$ time, which is $O(mn)$. 
+There is a loop of m segments over a function, that takes $O(n+m)$ time, but the $m$ in that function is only calculated once, so it stays $O(mn+m)$ time and not $O(m(n+m))$ time.
+So the running time of our algorithm is  $O(mn)$ \\
+
+
+
+
+
 \end{document}
