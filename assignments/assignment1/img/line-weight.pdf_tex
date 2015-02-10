@@ -49,11 +49,11 @@
   \global\let\svgscale\undefined%
   \makeatother%
   \begin{picture}(1,1.03470758)%
-    \put(0,0){\includegraphics[width=\unitlength,page=1]{line-weight.pdf}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=1]{img/line-weight.pdf}}%
     \put(0.55398689,0.28500143){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{}}}%
     \put(0.57012944,0.21840204){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{8}}}%
     \put(0.13824802,0.93754006){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{1}}}%
     \put(0.40733288,0.84739431){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{1}}}%
-    \put(0,0){\includegraphics[width=\unitlength,page=2]{line-weight.pdf}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=2]{img/line-weight.pdf}}%
   \end{picture}%
 \endgroup%

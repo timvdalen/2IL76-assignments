@@ -49,7 +49,7 @@
   \global\let\svgscale\undefined%
   \makeatother%
   \begin{picture}(1,1.26813754)%
-    \put(0,0){\includegraphics[width=\unitlength,page=1]{perp-distance.pdf}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=1]{img/perp-distance.pdf}}%
     \put(0.25551657,1.13868822){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{$Q_I$}}}%
     \put(-0.00434756,1.0634645){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{$P_1$}}}%
     \put(0.44973093,0.87061775){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{$Q_1$}}}%
