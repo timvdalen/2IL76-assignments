@@ -1,0 +1,95 @@
+\documentclass{beamer}
+
+\usetheme{Dresden}
+
+\usepackage[english]{babel}
+
+\title{Computing Highly Occluded Paths}
+
+\subtitle{Algorithms for Geographic Data}
+
+\author[Dalen, Kohl, Wezel]{
+	Tim van Dalen (0744839)
+	\and
+	Bram Kohl (0746107)
+	\and
+	Bart van Wezel (0740608)
+}
+
+\institute[TU/e] % (optional, but mostly needed)
+{
+    WIS\\
+	Eindhoven University of Technology
+}
+
+\date{\today}
+
+
+\subject{Algorithms for Geographic Data}
+
+\AtBeginSection[]
+{
+  \begin{frame}
+    \frametitle{Outline}
+    \tableofcontents[currentsection]
+  \end{frame}
+}
+
+\begin{document}
+
+	\begin{frame}
+		\titlepage
+	\end{frame}
+	
+	\begin{frame}
+		\frametitle{Outline}
+		\tableofcontents
+	\end{frame}
+
+	\section{Overview}
+	\begin{frame}{Overview}
+		\begin{itemize}
+			\item Paths on a terrain
+			\item Paths using a sparse network
+		\end{itemize}
+	\end{frame}
+	
+	\section{Terrain}
+	\begin{frame}{Motivation}
+		\begin{itemize}
+			\item Military
+			\item City planning
+			\item Virtual environments
+		\end{itemize}
+		
+		\note{
+			Troop movements, planning the location of visually unappealing construction projects such as power lines, video games
+		}
+	\end{frame}
+	
+	\begin{frame}{Approach}
+		\begin{itemize}
+			\item Compute visibility map
+				\begin{itemize}
+					\item Simplify terrain
+				\end{itemize}
+			\item Compute occluded paths
+		\end{itemize}
+	\end{frame}
+	
+	\section{Network}
+	\begin{frame}{Motivation}
+		\begin{itemize}
+			\item Followup research
+			\item Path-planning is a bottleneck
+		\end{itemize}
+	\end{frame}
+	
+	\begin{frame}{Approach}
+		\begin{itemize}
+			\item Learning based
+			\item Sampling based
+			\item Topology based
+		\end{itemize}
+	\end{frame}
+\end{document}
