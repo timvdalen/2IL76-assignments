@@ -42,7 +42,8 @@ We came up with a measure for how close a polygonal curve Q is to a point set P.
 
 We define the distance of a point in P to a line segment in Q as the minimum of the perpendicular distance to the line segment and the Euclidian distances to the two endpoints of the line segment.
 We define the perpendicular distance to the line segment as the perpendicular distance to the line through the endpoints of the line segments, or infinite if the intersection point of the perpendicular line with the line through the endpoints is not on the line segment.
-See for example Figure~\ref{fig:perp-distance}.
+See for example Figure~\ref{fig:perp-distance}.\\
+
 
 Here, the perpendicular distance is infinite as $Q_I$ is not on the line segment ($Q_1,Q_2$).
 
@@ -56,9 +57,11 @@ Here, the perpendicular distance is infinite as $Q_I$ is not on the line segment
 
 As not all points have to be close, we came up with a formula that defines the number of nearest points in P we will be looking at for each line segment.
 We do this in order to reduce noise from outliers.
-The formula we came up with is: $\lceil n\cdot \frac{l}{tl}\rceil$ where $n = |P|$, $l$ is the length of the line segment in Q we are currently looking at and $tl$ is the total length of the line segments in Q.
+The formula we came up with is: $\lceil n\cdot \frac{l}{tl}\rceil$ where $n = |P|$, $l$ is the length of the line segment in Q we are currently looking at and $tl$ is the total length of the line segments in Q.\\
+
+
 This way, longer lines need more close points than shorter lines.
-Note that when adding the number of nearest points for each line segment you get $n$, but this does not mean all points have to be one of the nearest points of a line segment, as a point can be a nearest point for multiple line segments.
+Note that when adding the number of nearest points for each line segment you get $n$, but this does not mean all points have to be one of the nearest points of a line segment, as a point can be a nearest point for multiple line segments.\\
 
 We wanted large line segments to take into consideration more nearest neighbours than small line segments because this is useful when P is well distributed over Q.
 See for example figure \ref{fig:line-weight}. In this figure $n = 14$ and the line segments are of length 1, 1 and 8. So for the line segments of length 1 we look at the nearest $\lceil 14\cdot \frac{1}{10}\rceil = 2$ points and for the line segment of length 8 we look at the nearest $\lceil 14\cdot \frac{8}{10}\rceil = 12$ points. This way, long line segments need more points.
@@ -73,24 +76,25 @@ See for example figure \ref{fig:line-weight}. In this figure $n = 14$ and the li
 
  
 	\input{algorithm}
-	
+\paragraph{}
 We will now analyse the running time of the algorithm. 
 We will do this by analysing the running time of each function.\\
 \textsc{PerpDistance}($p$, $(q_i, q_j))$ takes $O(1)$ time.\\
 \textsc{PointDistance}($p$, $q$) takes $O(1)$ time. \\
 \textsc{LineSegLength}($(q_i, q_j)$) takes $O(1)$ time. \\
-\textsc{LineLength}($Q$) takes $O(m)$ time, but if we cache the result, we only have to calculate it once. This means that when this function is called multiple times it will not become $\cdot m$ , but $+m$.\\
+\textsc{LineLength}($Q$) takes $O(m)$ time, but if we cache the result, we only have to calculate it once. This means that when this function is called a second time, it takes $O(1)$ time instead of $O(m)$.\\
 \textsc{Distance}($p$, $(q_i, q_j)$) takes $O(1)$ time.\\
 \textsc{SegmentMetric}(($(q_i, q_j)$, $P$, $Q$) takes $O(n+m)$ time, because there is a for loop over n points. \\
 \textsc{PointCurveDistanceMetric}($P$, $Q$)  takes $O(mn + m)$ time, which is $O(mn)$. 
 There is a loop of m segments over a function, that takes $O(n+m)$ time, but the $m$ in that function is only calculated once, so it stays $O(mn+m)$ time and not $O(m(n+m))$ time.
 So the running time of our algorithm is  $O(mn)$ \\
 
+
 The measure should give a low value for the distance when everywhere on Q, there are several points of P close by, and a higher value when more or longer parts of Q do not have several points close by.
-However in the following example Figure~\ref{fig:example1}. Each line segment has points close by. 
-The points above the long line segments are still pretty close to the long line, but there is still a longer part of Q that does not have points close by. 
-We do take the length of the lines in acccount, but we do not look where those points are on each line segment. 
-So our algorithm returns false values when there are long line segments which have points close by, but those points are all close to one point on that line and not nicely distributed. 
+However in the example in Figure~\ref{fig:example1}, a weakness of our approach can be seen. 
+In the example, the points above the long line segments are pretty close to the long line, but there is still a longer part of Q that does not have points nearby. 
+We do take the length of the lines into account, but we do not look what part of the line segments the points are close to. 
+So our algorithm returns low values when there are long line segments which have points close by, but when those points are all close to one point on that line and not nicely distributed, you might expect a high value as there are long parts of Q which do not have several points nearby. But in this case, our approach gives a low value.
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.5\textwidth]{img/example1.pdf}
