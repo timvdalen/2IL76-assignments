@@ -7,7 +7,7 @@ Find a minimum link path from $a_{1}$ to $a_{n}$  in G using breadth-first searc
       \begin{algorithm}{ValidShortcut}{$(A, A_{i},A_{j},\varepsilon$)}
       \qfor $k = i+1, k < j$\\
        \qif d(evaluate$(A_{k},A_{i},A_{j}), A_{k}) > \varepsilon$ \\ 
-       \qreturn False \qfi \qrof \\
-       \qreturn True
+       \qreturn \qfalse \qfi \qrof \\
+       \qreturn \qtrue
       \end{algorithm} 
       

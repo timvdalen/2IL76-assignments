@@ -1,0 +1,64 @@
+\documentclass[a4paper,11pt]{article}
+\usepackage{amssymb}
+\usepackage{booktabs}
+\usepackage{geometry}
+\usepackage{color}
+\usepackage{hyperref}
+\usepackage{listings}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage[T1]{fontenc}
+\usepackage{algo}
+
+\geometry{
+	includeheadfoot,
+	margin=2.54cm
+}
+
+\setlength\parindent{24pt}
+
+\title{
+	2IL76 Algorithms for Geographic Data Set 1 \\
+}
+\author{
+	Bram Kohl - b.j.e.kohl@student.tue.nl - 0746107
+}
+\date{\today}
+
+\begin{document}
+	\maketitle
+	
+\section*{Exercise 1}
+We solve this exercise using a variant of the Agarwal et al. algorithm from the Simplification lecture. In the algorithm, we use \textsc{EnclosingDisk(P)} as a subroutine which computes the smallest enclosing disk for the set P of $k$ points. This subroutine is given in the assignment and uses O($k$) time.\\
+%TODO: another difference is that we now set i to j+1 instead of j, as we only need P_j to be close enough to one circle and no longer need to connect this point to the next one (rather than just find a point which is close enough to the next one). Also leq n instead of <
+\subsection*{Algorithm}
+\begin{algorithm}{NonRestrictedSimplification}{(A,$\varepsilon$)}
+	i := 1\\
+	B = $\varnothing$\\
+	\qwhile i $\leq$ n \\
+	find \textit{any} j>i such that \\
+	\hspace{4ex} (the radius of \textsc{EnclosingDisk($A_i\dots A_j$)} $\leq \varepsilon$ and\\
+	\hspace{4ex} the radius of \textsc{EnclosingDisk($A_i\dots A_{j+1}$)} $> \varepsilon$) or\\
+	\hspace{4ex} (the radius of \textsc{EnclosingDisk($A_i\dots A_j$)} $\leq \varepsilon$ and j=n)\\
+	Add the center of the \textsc{EnclosingDisk($A_i\dots A_j$)} to B\\
+	i := j + 1 \qend \\
+	\qreturn B
+\end{algorithm} 
+In this algorithm, n is the length of A.
+\subsection*{Proof of correctness}
+In order to prove that the algorithm is correct, we have to prove two things. Firstly that the discrete Fr\'{e}chet distance between A and B is at most $\varepsilon$ and secondly that B is minimum-length.\\
+
+For the first part, take an arbitrary point $A_x$ in A (so $1 \leq x \leq n$). In the algorithm, i is initialized on 1, after which a j is chosen for which all points from $A_i$ up to and including $A_j$ are within \textsc{EnclosingDisk($A_i$\dots $A_j$)} (we assume this function to be correct as it is given). The radius of this disk is at most $\varepsilon$. Then the center of this disk is added to the result sequence. So suppose $i \leq x \leq j$, then $A_x$ is within $\varepsilon$ of the center of this disk.\\
+After this iteration of the while loop, i is set to j+1 and this continues (starting at i = 1) until i is greater than n, so at some point (as $1 \leq x \leq n$) x will be between i and j and thus $A_x$ will be within $\varepsilon$ of the center of a disk, and thus a point of B. So an arbitrary point of A is close enough to B, thus it holds for all points of A, thus the discrete Fr\'{e}chet distance of A to B is at most $\varepsilon$.\\
+
+The second part can be proven as follows. As we use the Fr\'{e}chet distance, we cannot go backwards in time, e.g. we cannot have a point x in B associated with a point in y A that is in between two other points in A, let's say y' and y'', where y' and y'' are associated with a point x' in B for which x' $\neq$ x. Due to this, we can do a greedy approach starting at $A_1$ and associating as many points of A as possible to the same point in B, after which we can continue at the next point in A which has not been associated to a point in B yet and do the same. We need to link this first unassociated point to the upcoming point in B every time, as we cannot go back in time to include it later. Furthermore we cannot skip a point for the same reason, so we add as many points as possible without skipping any points. This way we define points in B for every point in A which include the maximum number of possible points, and thus A will be covered by a minimal number of points in B.
+
+\subsection*{Running time}
+At first glance, the algorithm seems to run in O($n^2$) time, as the while loop has n iterations, and finding the j for which the condition on lines 5-7 holds seems linear. But just like the algorithm of Agarwal et al. in the Simplification we can reduce the number of iterations of this loop as we just need \textit{any} point for which this condition holds. So here, we can do the combination of Exponential search and Binary search as well. So we test whether \textsc{EnclosingDisk($A_i$\dots $A_j$)} $> \varepsilon$ for j = i+1, i+2, i+4, etc until we find a j = i + $2^k$ such that \textsc{EnclosingDisk($A_i$\dots $A_j$)} $> \varepsilon$ holds. When we find this, we do a binary search 
+\section*{Exercise 2}
+First, we have to prove that the above-below relation is acyclic for a monotone map M.\\
+Proof: We prove this in 2 parts: first we prove that for two paths $c_i$ and $c_j$, $c_i$ is not both above and below $c_j$. This is the case as we are dealing with a monotone map. In order for $c_i$ to be both above and below $c_j$, it needs to have an endpoint above $c_j$ and one below it. 
+Let $c_i$, $c_j$ and $c_k$ be paths with $c_i$ above $c_j$ and $c_j$ above $c_k$. Now we have to prove that $c_k$ is not above $c_i$. In a monotone map, a Suppose $c_k$ is above $c_i$, then at least one of $c_k$'s endpoints is above $c_i$. 
+\end{document} 

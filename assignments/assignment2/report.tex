@@ -38,7 +38,13 @@
 	\maketitle
 	
 \section*{Exercise 3}
-The algorithm we came up with is a 3 dimensional variant on the Imai-Iri algorithm. Essentially it works the same as \textsc{Imai-Iri}, but the \textsc{ValidShortcut} is different. The input for our algorithm, \textsc{Imai-Iri-3D}, is A, which is the trajectory and $\varepsilon$ which is the maximum distance.
+\subsection*{Algorithm}
+The algorithm we came up with is a 3 dimensional variant on the Imai-Iri algorithm. Essentially it works the same as \textsc{Imai-Iri}, but the \textsc{ValidShortcut} is different. The input for our algorithm, \textsc{Imai-Iri-3D}, is A, which is the trajectory and $\varepsilon$ which is the maximum distance of the trajectory to its simplification.
 
 \input{../algo2}
+
+In this algorithm, d(x,y) is the Manhattan distance of x to y, and evaluate$(A_k,A_i,A_j)$ is the value of the $A_i,A_j$ line on the $z$ (time) of $A_k$. This is a 3d point, but, obviously, has the same z-value as $A_k$.
+
+\subsection*{Proof of correctness}
+Our algorithm is based on \textsc{Imai-Iri}, which is obviously correct. So what is left to prove is that our adaptation does not falsify the correctness. We still check the distance of the intermediate points (the points between the endpoints of the shortcut)
 \end{document}
