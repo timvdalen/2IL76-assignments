@@ -1,0 +1,13 @@
+\begin{algorithm}{Imai-Iri3D}{(A,$\varepsilon$)}
+ Find all possible valid shortcuts \\
+Build a graph G containing all valid shortcuts. \\
+Find a minimum link path from $a_{1}$ to $a_{n}$  in G using breadth-first search.
+      \end{algorithm} 
+      
+      \begin{algorithm}{ValidShortcut}{$(A, A_{i},A_{j},\varepsilon$)}
+      \qfor $k = i+1, k < j$\\
+       \qif evaluate$(A_{k},A_{i},A_{j}) > \varepsilon$ \\ 
+       \qreturn False \qfi \qrof \\
+       \qreturn True
+      \end{algorithm} 
+      
