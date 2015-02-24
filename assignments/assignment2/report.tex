@@ -1,0 +1,44 @@
+\documentclass[a4paper,11pt]{article}
+\usepackage{amssymb}
+\usepackage{booktabs}
+\usepackage{geometry}
+\usepackage{color}
+\usepackage{hyperref}
+\usepackage{listings}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage[T1]{fontenc}
+\usepackage{algo}
+
+
+\graphicspath{{img/}}
+
+\setlength\parindent{0cm}
+
+\geometry{
+	includeheadfoot,
+	margin=2.54cm
+}
+
+\title{
+	2IL76 Algorithms for Geographic Data Set 2 \\
+}
+\author{
+	Tim van Dalen (0744839)
+	\and
+	Bram Kohl (0746107)
+	\and
+	Bart van Wezel (0740608)
+}
+\date{\today}
+
+\begin{document}
+	\maketitle
+	
+\section*{Exercise 3}
+The algorithm we came up with is a 3 dimensional variant on the Imai-Iri algorithm. Essentially it works the same as \textsc{Imai-Iri}, but the \textsc{ValidShortcut} is different. The input for our algorithm, \textsc{Imai-Iri-3D}, is A, which is the trajectory and $\varepsilon$ which is the maximum distance.
+
+\input{../algo2}
+\end{document}
