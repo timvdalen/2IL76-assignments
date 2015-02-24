@@ -1,0 +1,15 @@
+
+The running time of our algorithm is $O(n^{3})$. 
+We have $O(n^{2})$ shortcuts. 
+We need $O(n)$ time for each shortcut. 
+We need $O(n^{2})$ time to build the graph from the shortcuts and $O(n^{2})$ time to use bread first search to find the shortest path. 
+This means that the total running time of our algorithm is $O(n^{3})$, just like the original Imai-Iri algorithm. 
+However the algorithm should run in $O(n^{2})$ time. 
+This means that we have to speed up our algorithm.
+In the lecture they speed up Imai-Iri by testing all shortcuts from a single vertex in linear time instead of in $O(n)$ time. 
+You can do this by checking if both rays (from $p_{i}$ through $p_{j}$ and from $p_{j}$ through $p_{i}$) intersect all $\varepsilon$ -disks of vertices inbetween. This is possible to do in linear time when you compute the plane of these points and look if the ray is in that plane. The plane you compute in linear time, because you only add one other wedge to the plane each time when you look one more point away. 
+However we cannot directly apply this method, because we look at the Manhattan distance between two points. Also our algorithm also uses time, so we would have to do it in 3D. 
+We can do this by checking if the rays (from $p_{i}$ through $p_{j}$ and from $p_{j}$ through $p_{i}$) intersect the square defined by the four points: 
+$(x_{k}+\varepsilon,y_{k}+\varepsilon,t_{k}), (x_{k}+\varepsilon,y_{k}-\varepsilon,t_{k}), (x_{k}-\varepsilon,y_{k}+\varepsilon,t_{k})$ and $(x_{k}-\varepsilon,y_{k}-\varepsilon,t_{k})$ for each k such that $i<k<j$. We can now maintain a pyramid. You start with the pyramid of $p_{k-1}$ and  $(x_{k}+\varepsilon,y_{k}+\varepsilon,t_{k}), (x_{k}+\varepsilon,y_{k}-\varepsilon,t_{k}), (x_{k}-\varepsilon,y_{k}+\varepsilon,t_{k})$ and $(x_{k}-\varepsilon,y_{k}-\varepsilon,t_{k})$. 
+Then for each point after that till n you take the intersetion of the previous pyramid and the new pyramid. 
+Then a shortcut is possible if the ray between the points is in the pyramid. 
