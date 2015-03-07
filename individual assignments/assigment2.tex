@@ -20,7 +20,7 @@
 \setlength\parindent{24pt}
 
 \title{
-	2IL76 Algorithms for Geographic Data Set 1 \\
+	2IL76 Algorithms for Geographic Data Set 2 \\
 }
 \author{
 	Bram Kohl - b.j.e.kohl@student.tue.nl - 0746107
@@ -56,9 +56,23 @@ After this iteration of the while loop, i is set to j+1 and this continues (star
 The second part can be proven as follows. As we use the Fr\'{e}chet distance, we cannot go backwards in time, e.g. we cannot have a point x in B associated with a point in y A that is in between two other points in A, let's say y' and y'', where y' and y'' are associated with a point x' in B for which x' $\neq$ x. Due to this, we can do a greedy approach starting at $A_1$ and associating as many points of A as possible to the same point in B, after which we can continue at the next point in A which has not been associated to a point in B yet and do the same. We need to link this first unassociated point to the upcoming point in B every time, as we cannot go back in time to include it later. Furthermore we cannot skip a point for the same reason, so we add as many points as possible without skipping any points. This way we define points in B for every point in A which include the maximum number of possible points, and thus A will be covered by a minimal number of points in B.
 
 \subsection*{Running time}
-At first glance, the algorithm seems to run in O($n^2$) time, as the while loop has n iterations, and finding the j for which the condition on lines 5-7 holds seems linear. But just like the algorithm of Agarwal et al. in the Simplification we can reduce the number of iterations of this loop as we just need \textit{any} point for which this condition holds. So here, we can do the combination of Exponential search and Binary search as well. So we test whether \textsc{EnclosingDisk($A_i$\dots $A_j$)} $> \varepsilon$ for j = i+1, i+2, i+4, etc until we find a j = i + $2^k$ such that \textsc{EnclosingDisk($A_i$\dots $A_j$)} $> \varepsilon$ holds. When we find this, we do a binary search 
+Just like the algorithm of Agarwal et al. in the Simplification slides, we can reduce the number of iterations of the inner loop as we just need \textit{any} point for which the condition on lines 5-7 of the algorithm holds. So here, we can do the combination of Exponential search and Binary search as well. So we test whether the radius of \textsc{EnclosingDisk($A_i$\dots $A_j$)} $> \varepsilon$ for j = i+1, i+2, i+4, etc until we find a j = i + $2^k$ such that the radius of \textsc{EnclosingDisk($A_i$\dots $A_j$)} $> \varepsilon$ holds. When we find this, we do a binary search between i+$2^{k-1}$ and i+$2^k$ to find the j for which the radius of \textsc{EnclosingDisk($A_i\dots A_j$)} $\leq \varepsilon$ and the radius of \textsc{EnclosingDisk($A_i\dots A_{j+1}$)} $> \varepsilon$ (or j = n). As we do \textsc{EnclosingDisk} on $j-i$ points every time, we get O($j-i$) as running time for this. This is the same as the running time of computing the Fr\'{e}chet distance in the Simplification slides. So we get the same running time for the algorithm as the Agarwal et al. algorithm from the slides: O($n \log n$).
+
 \section*{Exercise 2}
 First, we have to prove that the above-below relation is acyclic for a monotone map M.\\
-Proof: We prove this in 2 parts: first we prove that for two paths $c_i$ and $c_j$, $c_i$ is not both above and below $c_j$. This is the case as we are dealing with a monotone map. In order for $c_i$ to be both above and below $c_j$, it needs to have an endpoint above $c_j$ and one below it. 
-Let $c_i$, $c_j$ and $c_k$ be paths with $c_i$ above $c_j$ and $c_j$ above $c_k$. Now we have to prove that $c_k$ is not above $c_i$. In a monotone map, a Suppose $c_k$ is above $c_i$, then at least one of $c_k$'s endpoints is above $c_i$. 
+Proof: We prove this in 2 parts: first we prove that for two paths $c_i$ and $c_j$, $c_i$ is not both above and below $c_j$. This is the case as we are dealing with a monotone map. In order for $c_i$ to be both above and below $c_j$, it needs to have an endpoint above $c_j$ and one below it (or symmetrically, $c_j$ needs to have an endpoint above and one below $c_i$). So the x coordinates of both of the endpoints of $c_i$ have to be between the x coordinates of the endpoints of $c_j$, while one of the endpoints of $c_i$ is below $c_j$ and the other is above $c_j$. To accomplish this, $c_i$ would have to either cross through $c_j$, which contradicts with the definition of a map, or $c_i$ would have to go around one of the endpoints of $c_j$, which contradicts with the map being monotone.\\
+
+In the second case, there are more than two paths involved. Let $c_i$, $c_j$ and $c_k$ be paths with $c_i$ above $c_j$ and $c_j$ above $c_k$. Now we have to prove that $c_k$ is not above $c_i$. Suppose $c_k$ is above $c_i$, then at least one of $c_k$'s endpoints, let's call it $a$, is above $c_i$. So the x coordinate of $a$ is between the x coordinates of the endpoints of $c_i$, and $a$ is above $c_i$. In order for $c_k$ to be below $c_j$, one of the endpoints of $c_k$ has to be below $c_j$ and its x coordinate needs to be in between the x coordinates of the endpoints of $c_j$. Lets call this point $b$. Then $b$ cannot reach $a$ without either 1. $c_k$ intersecting with $c_i$ or $c_j$ (which conflicts with the map definition), or 2. $c_k$ going around one of the endpoints of $c_i$ or $c_j$ (which conflicts with the monotonicity definition). As $c_j$ is below $c_i$, one of its endpoints is below $c_i$, so at least a part of the area below $c_j$ is below $c_i$ as well. If $b$ is within this part, then we have the same as in the first case of this assignment, so 1. and 2. follow. If $b$ is not below $c_i$, then it is possible it can connect to $a$ without intersecting $c_i$ and without violating the monotonicity constraint. But then (if it does not violate the monotonicity constraint), it would intersect with $c_j$, as $b$ is in the part that is underneath $c_j$ but not underneath $c_i$, and $a$ is above $c_i$ and between the x coordinates of the endpoints of $c_i$.\\
+For example, look at figure \ref{fig:ass2}. Here $a$ would be in the area above $c_i$ and $b$ in the area below $c_j$. If $b$ is in the area that is below both $c_i$ and $c_j$, it cannot reach any point above $c_i$ without breaking map or monotonicity definition on $c_i$. If $b$ is in the part below $c_j$ that is not below $c_i$, then it cannot reach any point above $c_j$ without breaking the monotonicity constraint and without crossing either $c_i$ or $c_j$.\\
+
+A total order for a monotone map can be computed efficiently using a Plane Sweep algorithm from the second slide set of the 2IL55 course (which I did not take). \url{http://www.win.tue.nl/~kbuchin/teaching/2IL55/slides/02line-segment-intersection.pdf}.\\
+To do this, you sweep from left to right and when you are at the endpoint of a path you at it to your order.
+
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.1]{assignment2.jpg}
+	\caption{Infinite perpendicular distance}
+	\label{fig:ass2}
+\end{figure}
 \end{document} 

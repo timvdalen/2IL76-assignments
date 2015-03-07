@@ -1,0 +1,48 @@
+\documentclass[a4paper,11pt]{article}
+\usepackage{amssymb}
+\usepackage{booktabs}
+\usepackage{geometry}
+\usepackage{color}
+\usepackage{hyperref}
+\usepackage{listings}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage[T1]{fontenc}
+\usepackage{algo}
+
+
+\graphicspath{{img/}}
+
+\setlength\parindent{0cm}
+
+\geometry{
+	includeheadfoot,
+	margin=2.54cm
+}
+
+\title{
+	2IL76 Algorithms for Geographic Data Set 3 \\
+}
+\author{
+	Tim van Dalen (0744839)
+	\and
+	Bram Kohl (0746107)
+	\and
+	Bart van Wezel (0740608)
+}
+\date{\today}
+
+\begin{document}
+	\maketitle
+	
+\section*{Exercise 3}
+We are given a graph G with vertices $v_1 \dots v_n$, and have to create trajectories such that there is a k-clique in G, if and only if a subset of those trajectories forms a k-group. In order to realize this, we create $n$ trajectories in the following way:\\
+For $i = 1$ to $n$ 
+\begin{enumerate}
+	\item Place the $i^{th}$ point of trajectory $A_i$ at coordinate $(i, 0)$.
+	\item For each $1 \leq j \leq n$ where $j \neq i$, if $v_i$ and $v_j$ are connected in G, place the $i^{th}$ point of trajectory $A_j$ at coordinate $(i,\varepsilon)$. Otherwise ($v_i$ and $v_j$ are not connected), place it at coordinate $(i,2\varepsilon)$.
+\end{enumerate}
+This way, at time $t_i$, trajectory $A_i$ and $A_j$ (for any $j$ with $1 \leq j \leq n$ and $j \neq i$) are close enough to be in a k-group together, if and only if $v_i$ and $v_j$ share an edge in G.
+\end{document}
