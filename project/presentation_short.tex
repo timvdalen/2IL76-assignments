@@ -4,11 +4,20 @@
 
 \usepackage[english]{babel}
 
+\usepackage{pgfkeys,pgfcalendar}
+
+\newcount\pgfdatecount
+\newcommand{\tomorrow}{%
+\pgfcalendardatetojulian{\year-\month-\day+1}{\pgfdatecount}
+\pgfcalendarjuliantodate{\the\pgfdatecount}{\myyear}{\mymonth}{\myday}
+\pgfcalendarmonthname{\mymonth}\space\myday,\space\myyear%
+}
+
 \title{Computing Highly Occluded Paths}
 
 \subtitle{Algorithms for Geographic Data}
 
-\author[Dalen, Kohl, Wezel]{
+\author[Group 10]{
 	Tim van Dalen (0744839)
 	\and
 	Bram Kohl (0746107)
@@ -22,7 +31,7 @@
 	Eindhoven University of Technology
 }
 
-\date{\today}
+\date{\tomorrow}
 
 
 \subject{Algorithms for Geographic Data}
