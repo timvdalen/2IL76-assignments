@@ -64,7 +64,7 @@ We cannot yet assume that all the points are in an $\varepsilon$-disk together y
 
 Q.E.D.\\
 
-Furthermore we would like to note that creating the trajectories from G takes polynomial time (O($n^2\cdot|E|$), where $|E|$ is the number of edges in G).
+Furthermore we would like to note that creating the trajectories from G takes polynomial time, namely O($n^2\cdot|E|$). Here $|E|$ is the number of edges in G. This is because we loop over n and inside this loop, in item \ref{itm:second}, we loop over n again, each time checking if there is an edge between $v_i$ and $v_j$. We assume we can check this by looping over the edges and checking if it is an edge between $v_i$ and $v_j$.
 
 \begin{figure}[H]
 	\centering
