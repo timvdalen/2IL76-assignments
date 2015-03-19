@@ -1,0 +1,76 @@
+\documentclass[a4paper,11pt]{article}
+\usepackage{amssymb}
+\usepackage{booktabs}
+\usepackage{geometry}
+\usepackage{color}
+\usepackage{hyperref}
+\usepackage{listings}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage[T1]{fontenc}
+\usepackage{algo}
+
+
+\graphicspath{{img/}}
+
+\setlength\parindent{0cm}
+
+\geometry{
+	includeheadfoot,
+	margin=2.54cm
+}
+
+\title{
+	2IL76 Algorithms for Geographic Data Set 3 \\
+}
+\author{
+	Tim van Dalen (0744839)
+	\and
+	Bram Kohl (0746107)
+	\and
+	Bart van Wezel (0740608)
+}
+\date{\today}
+
+\begin{document}
+	\maketitle
+	
+\section*{Exercise 3}
+For this exercise we assume that the $\varepsilon$ in an $\varepsilon$-disk indicates the diameter of the disk (and thus not the radius).\\
+
+We are given a graph G with vertices $v_1 \dots v_n$, and have to create trajectories such that there is a $k$-clique in G, if and only if a subset of those trajectories forms a $k$-group. In order to realize this, we create $n$ trajectories in the following way:\\
+For $i = 1$ to $n$ 
+\begin{enumerate}
+	\item \label{itm:first} Place the $i^{th}$ point of trajectory $A_i$ at coordinate $(i, 0)$.
+	\item \label{itm:second} For each $1 \leq j \leq n$ where $j \neq i$, if $v_i$ and $v_j$ are connected in G, place the $i^{th}$ point of trajectory $A_j$ at coordinate $(i,\varepsilon)$. Otherwise ($v_i$ and $v_j$ are not connected), place it at coordinate $(i,2\varepsilon)$.
+\end{enumerate}
+This way, at time $t_i$, trajectory $A_i$ and $A_j$ (for any $j$ with $1 \leq j \leq n$ and $j \neq i$) are close enough to be in a $k$-group together, if and only if $v_i$ and $v_j$ share an edge in G.\\
+Proving this is straightforward. We do this by first checking the if and then the only if:\\ 
+At time $t_i$, $A_i$ is at $(i, 0)$ (see item \ref{itm:first}). If $v_i$ and $v_j$ share an edge, then $A_j$ is at $(i,\varepsilon)$ at that same time. So they are $\varepsilon$ apart and thus are close enough to be in a $k$-group together. If $v_i$ and $v_j$ do not share an edge, $A_j$ is at $(i,2\varepsilon)$ at time $t_i$, so the distance between $A_i$ and $A_j$ at that time is $2\varepsilon$, which means $A_i$ and $A_j$ are too far apart to be in a group together.\\
+
+Furthermore all $A_j$ and $A_l$, $j \neq i$ and $l \neq i$ are close enough at $t_i$ to be in a group together.\\
+This is easy to prove as well. $A_j$ and $A_l$ can only be in two places at time $t_i$, namely $(i,\varepsilon)$ or $(i,2\varepsilon)$, as only $A_i$ can be somewhere else ($(i,0)$) and $j$ and $l$ are not equal to $i$. So they either share a point at $t_i$, or they are $\varepsilon$ apart. In both cases they are close enough to eachother to be in a group together.\\
+
+Using the statements proven in the last two paragraphs, we can show that $v_i$ is part of a $k$-clique, if and only if $A_i$ is part of a $k$-group.\\
+We will prove this in two parts: if $A_i$ is part of a $k$-group, then $v_i$ is part of a $k$-clique, and if $v_i$ is part of a $k$-clique then $A_i$ is part of a $k$-group.\\
+
+For the first part, assume $A_i$ is part of a $k$-group. Then at any time $t_x$ ($1\leq x\leq n$), there is an $\varepsilon$-disk which contains $A_i$ and the $k-1$ other trajectories that are in the $k$-group, at $t_x$. This means there is an edge between any pair of the vertices in G that correspond to the trajectories in this $k$-group (which means these vertices form a clique).\\
+To prove this, suppose that there is a pair of trajectories, $A_i$ and $A_j$, which are both in the $k$-group, but for which the corresponding vertices $v_i$ and $v_j$ in G do not share an edge. At time $t_i$, $A_i$ is placed on $(i, 0)$ (see item \ref{itm:first}). Under our assumption of no shared edge, $A_j$ is placed at $(i,2\varepsilon)$ (see item \ref{itm:second}). This means the distance between $A_i$ and $A_j$ at time $t_i$ is $2\varepsilon$. This conflicts with them being in an $\varepsilon$-disk together and thus our assumption that $v_i$ and $v_j$ do not share an edge must be false. Thus each pair of vertices that correspond to the trajectories in a $k$-group share an edge, and thus these corresponding vertices form a $k$-clique (and $v_i$ is one of these vertices as it corresponds to $A_i$).\\
+
+For the second part, assume $v_i$ is part of a $k$-clique. Any pair of vertices $v_j$, $v_l$ in this $k$-clique share an edge. This means that at time $t_j$, $A_j$ is close enough to $A_l$, as $A_j$ is placed at $(j,0)$ (see item \ref{itm:first}) and $A_l$ is placed at $(j,\varepsilon)$ (see item \ref{itm:second}). At time $t_l$ the same argument holds due to symmetry. At any other time $t_x$, both $A_j$ and $A_l$ are placed either at $(x,\varepsilon)$ or at $(x,2\varepsilon)$. So they are either 0 or $\varepsilon$ apart from eachother, at any time.\\
+We cannot yet assume that all the points are in an $\varepsilon$-disk together yet, because although pair-wise they are all close enough (at most $\varepsilon$) to eachother, it could still occur no $\varepsilon$-disk can be drawn around them. E.g. in figure \ref{fig:nodisk}, each pair of vertices is at most a distance of 2 apart, but there is no disk. In our case, this will not happen as the points at any specific time are on one vertical line (the x-coordinate is the time). So the highest point in the clique is still at most $\varepsilon$ away from the lowest point, and all other points are in between. So there is an $\varepsilon$-disk around all the points of the trajectories corresponding to the vertices in the $k$-clique, at any time. So these trajectories form a $k$-group (and $A_i$ is in this group as it corresponds to $v_i$).\\
+
+Q.E.D.\\
+
+Furthermore we would like to note that creating the trajectories from G takes polynomial time, namely O($n^2\cdot|E|$). Here $|E|$ is the number of edges in G. This is because we loop over n and inside this loop, in item \ref{itm:second}, we loop over n again, each time checking if there is an edge between $v_i$ and $v_j$. We assume we can check this by looping over the edges and checking if it is an edge between $v_i$ and $v_j$.
+
+\begin{figure}[H]
+	\centering
+	\def\svgwidth{0.5\textwidth}
+	\input{img/disk.pdf_tex}
+	\caption{Each pair of nodes is close enough, but no disk can be made}
+	\label{fig:nodisk}
+\end{figure}
+\end{document}
