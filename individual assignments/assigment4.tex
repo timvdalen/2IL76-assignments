@@ -75,4 +75,25 @@ Thus we found a pointset for which the 4-slider model can label $\frac{6}{4} = 1
 
 
 \section*{Exercise 2}
+We are given a set $D$ of triangular cones, $\Delta_1 \dots \Delta_n$ and the maximum zoom level, $S_{max}$. We want to return the maximum $\sum_{i=1}^{n}A_i$, where $A_i$ is the top of the active range [0,$A_i$] for each label i ($1 \leq i \leq n$).\\
+In order to solve this problem, we use dynamic programming. Define the free space F(i,j) to be the space enclosed by s=0, the right side edge of $\Delta_i$, the left side edge of $\Delta_j$ and if the last two do not cross, $S_{max}$. We define A[i,j] to be the optimal solution for labels $i+1 \dots j-1$ in F(i,j). Define \textit{truncated triangular cone} as the part of the corresponding triangular cone that is within its active region. In A[i,j], at least one of the truncated triangular cones touches a non-bottom edge of F(i,j), which divides the problem into two independent subproblems. For each $k = i+1 \dots j-1$, we denote by $h_{k}^{i,j}$ the zoom level at which $\Delta_k$ first reaches a non-bottom edge of F(i,j). Furthermore, we add dummy triangular cones $\Delta_0$ and $\Delta_{n+1}$ to the very front respectively very end of the set. Now we calculate our original problem recursively, as follows:\\
+A[i,j] = max\{$A[i,k] + h_{k}^{i,j} + A[k,j] | i+1 \leq k \leq j-1$\}\\
+
+\subsection*{Algorithm}
+\begin{algorithm}{1D-ActiveRangeOptimization}{($D$, i, j)}
+	\qif $j-i = 1$\\
+	\qthen \qreturn 0\\
+	\qelse \qif $j-i = 2$\\
+	\qthen \qreturn $h_{i+1}^{i,j}$\qend \qend \qend \\ 
+	\qreturn max(1D-ActiveRangeOptimization($D$, i, k) + $h_{k}^{i,j}$ + 1D-ActiveRangeOptimization($D$, k, j)) for $i + 1 \leq k \leq j-1$
+\end{algorithm} 
+
+The optimal solution is A[0,n+1].
+
+\subsection*{Correctness}
+The algorithm always takes the maximum possible combination of subproblems and picked cone in line 5, so in the end, it returns the maximum possible height of the active ranges.
+
+\subsection*{Running time}
+The running time of the algorithm is the time it takes to solve a subproblem, O($n$), multiplied by the number of subproblems, O($n^2$)). So the total running time is O($n^3).
+
 \end{document} 
