@@ -84,12 +84,9 @@ Before a region leaves the necklace, the part of the region that is inside the n
 Because of this, the factor for that region also becomes smaller, meaning that the weight of that region on the position of the ring becomes smaller.
 This means the ring for the type of that region has already moved towards its new position.
 
-The suitable feasible intervals for which we can move the circle nicely depend on the size of the regions. 
-When regions enter and leave completely during one interval, then we do not get the effect of regions that first only take into account a smaller part for that type. 
-This happens when there are a lot of regions and thus a lot of the regions leave and enter during a interval. 
-However we only handle this not  nicely if the total size of that kind of regions is small. 
-But when this is the case we think there is no way to handle this nicely and thus we accept larger movements on the ring. 
+The suitable feasible intervals for which we can move the circle in a nice, continuous way, depend on the size of the regions.
+When, during the same interval, a new region of a certain type enters the necklace and another region, of the same type, completely leaves the necklace, our approach fails since we can not use the weighting to ease the transition.
+This happens more often when there are a lot of different regions, and if the total size of the type is small.
+However, since this problem is directly related to the size of the interval and we are working in a continuous context, it should not be a problem.
 
 \end{document}
-
-
