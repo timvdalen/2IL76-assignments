@@ -9,21 +9,24 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="210mm"
-   height="297mm"
-   viewBox="0 0 744.09448819 1052.3622047"
+   width="138.21207mm"
+   height="101.32159mm"
+   viewBox="0 0 489.7278 359.01352"
    id="svg2"
    version="1.1"
    inkscape:version="0.91pre4 r13712"
-   sodipodi:docname="figure1.svg">
+   sodipodi:docname="figure1.svg"
+   inkscape:export-filename="C:\Users\bart\Documents\GitHub\2IL76-assignments\assignments\assignment4\figure1.png"
+   inkscape:export-xdpi="90"
+   inkscape:export-ydpi="90">
   <defs
      id="defs4">
     <inkscape:perspective
        sodipodi:type="inkscape:persp3d"
-       inkscape:vp_x="0 : 526.1811 : 1"
-       inkscape:vp_y="0 : 1000 : 0"
-       inkscape:vp_z="744.09449 : 526.1811 : 1"
-       inkscape:persp3d-origin="372.04724 : 350.7874 : 1"
+       inkscape:vp_x="0 : 526.18114 : 1"
+       inkscape:vp_y="0 : 1000.0001 : 0"
+       inkscape:vp_z="744.09451 : 526.18114 : 1"
+       inkscape:persp3d-origin="372.04725 : 350.78742 : 1"
        id="perspective4136" />
   </defs>
   <sodipodi:namedview
@@ -34,8 +37,8 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="1.4"
-     inkscape:cx="393.22443"
-     inkscape:cy="608.96309"
+     inkscape:cx="98.702759"
+     inkscape:cy="176.54938"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -43,10 +46,16 @@
      inkscape:window-height="705"
      inkscape:window-x="-8"
      inkscape:window-y="-8"
-     inkscape:window-maximized="1">
+     inkscape:window-maximized="1"
+     fit-margin-top="15"
+     fit-margin-left="15"
+     fit-margin-right="15"
+     fit-margin-bottom="15">
     <inkscape:grid
        type="xygrid"
-       id="grid4203" />
+       id="grid4203"
+       originx="-127.99325"
+       originy="-461.56473" />
   </sodipodi:namedview>
   <metadata
      id="metadata7">
@@ -63,7 +72,8 @@
   <g
      inkscape:label="Laag 1"
      inkscape:groupmode="layer"
-     id="layer1">
+     id="layer1"
+     transform="translate(-127.99325,-231.78399)">
     <rect
        style="fill:#daf600;fill-opacity:1;stroke:#140000;stroke-width:2;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
        id="rect4152"
@@ -128,12 +138,12 @@
        rx="4.2319188"
        ry="4.2319193" />
     <path
-       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;stroke-miterlimit:4;stroke-dasharray:8,8;stroke-dashoffset:0"
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:8, 8;stroke-dashoffset:0;stroke-opacity:1"
        d="m 480,362.3622 -60,30"
        id="path4250"
        inkscape:connector-curvature="0" />
     <path
-       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;stroke-miterlimit:4;stroke-dasharray:8,8;stroke-dashoffset:0"
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:8, 8;stroke-dashoffset:0;stroke-opacity:1"
        d="m 421.42857,471.64792 12.85714,7.14286"
        id="path4258"
        inkscape:connector-curvature="0" />
@@ -143,7 +153,7 @@
        id="path4260"
        inkscape:connector-curvature="0" />
     <path
-       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;stroke-miterlimit:4;stroke-dasharray:6,6;stroke-dashoffset:0"
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:6, 6;stroke-dashoffset:0;stroke-opacity:1"
        d="m 258.57143,458.07649 25,-7.85714"
        id="path4262"
        inkscape:connector-curvature="0" />
@@ -236,8 +246,8 @@
     <ellipse
        style="fill:#000000;fill-opacity:1;stroke:#060006;stroke-width:1.53616166;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
        id="path4201-11-2-6-4"
-       cx="310.00003"
-       cy="432.36218"
+       cx="315.00003"
+       cy="428.79074"
        rx="4.2319188"
        ry="4.2319193" />
     <text
@@ -251,10 +261,10 @@
          sodipodi:role="line"
          id="tspan4374-8-3"
          x="384.00797"
-         y="334.3855">(1.2,0.6)</tspan></text>
+         y="334.3855">(1.2,0.8)</tspan></text>
     <path
-       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;stroke-miterlimit:4;stroke-dasharray:8,8;stroke-dashoffset:0"
-       d="m 310,431.64792 -27.85714,-0.71429"
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:8, 8;stroke-dashoffset:0;stroke-opacity:1"
+       d="M 310,428.07649 282.14286,427.3622"
        id="path4429"
        inkscape:connector-curvature="0" />
     <text
@@ -282,14 +292,14 @@
     <text
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;font-size:12.5px;line-height:125%;font-family:Sans;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       x="315.71429"
-       y="440.21936"
+       x="320.71429"
+       y="439.50507"
        id="text4494"
        sodipodi:linespacing="125%"><tspan
          sodipodi:role="line"
          id="tspan4496"
-         x="315.71429"
-         y="440.21936">C</tspan></text>
+         x="320.71429"
+         y="439.50507">C</tspan></text>
     <text
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;font-size:12.5px;line-height:125%;font-family:Sans;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
